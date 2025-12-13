@@ -1,7 +1,7 @@
 import {Column, DataType, Max, Min, Model, PrimaryKey, Table} from "sequelize-typescript";
 
 @Table
-export class User extends Model<User> {
+export class User extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
   did!: string;
@@ -19,20 +19,20 @@ export class User extends Model<User> {
 }
 
 @Table
-export class BlueskySession extends Model<BlueskySession> {
+export class BlueskySession extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
-  did!: string;
+  sub!: string;
 
   @Column(DataType.JSON)
   sessionData!: object;
 }
 
 @Table
-export class BlueskyLoginState extends Model<BlueskyLoginState> {
+export class BlueskyLoginState extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
-  did!: string;
+  sub!: string;
 
   @Column(DataType.JSON)
   loginState!: object;
