@@ -13,13 +13,17 @@ export const blueskyOauthClient = new NodeOAuthClient({
   clientMetadata: clientMetadata as never,
   stateStore: {
     async set(sub: string, sessionData: NodeSavedState) {
-      // Insert or update the session data in your database
+      console.log(`[stateStore.set] Saving state for sub: ${sub}`, sessionData);
       await saveStateData(sub, sessionData)
     },
     async get(sub: string) {
-      // Retrieve the session data from your database
+      console.log(`[stateStore.get] Getting state for sub: ${sub}`);
       const sessionData = await getStateData(sub)
-      if (!sessionData) return undefined
+      if (!sessionData) {
+        console.log(`[stateStore.get] No state found for sub: ${sub}`);
+        return undefined
+      }
+      console.log(`[stateStore.get] Retrieved state for sub: ${sub}`, sessionData.loginState);
       return sessionData.loginState as NodeSavedState
     },
     async del(sub: string) {
@@ -29,13 +33,17 @@ export const blueskyOauthClient = new NodeOAuthClient({
   },
   sessionStore: {
     async set(sub: string, sessionData: NodeSavedSession) {
-      // Insert or update the session data in your database
+      console.log(`[sessionStore.set] Saving session for sub: ${sub}`, sessionData);
       await saveSessionData(sub, sessionData)
     },
     async get(sub: string) {
-      // Retrieve the session data from your database
+      console.log(`[sessionStore.get] Getting session for sub: ${sub}`);
       const sessionData = await getSessionData(sub)
-      if (!sessionData) return undefined
+      if (!sessionData) {
+        console.log(`[sessionStore.get] No session found for sub: ${sub}`);
+        return undefined
+      }
+      console.log(`[sessionStore.get] Retrieved session for sub: ${sub}`, sessionData.sessionData);
       return sessionData.sessionData as NodeSavedSession
     },
     async del(sub: string) {
