@@ -20,6 +20,7 @@ export class User extends Model {
 
 @Table
 export class BlueskySession extends Model {
+  @PrimaryKey
   @Column(DataType.STRING)
   did!: string;
 
@@ -29,6 +30,7 @@ export class BlueskySession extends Model {
 
 @Table
 export class BlueskyLoginState extends Model {
+  @PrimaryKey
   @Column(DataType.STRING)
   did!: string;
 
