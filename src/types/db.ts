@@ -4,36 +4,36 @@ import {Column, DataType, Max, Min, Model, PrimaryKey, Table} from "sequelize-ty
 export class User extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
-  did!: string;
+  declare did: string;
 
   @Min(1) @Max(31)
   @Column(DataType.INTEGER)
-  day!: number;
+  declare day: number;
 
   @Min(1) @Max(12)
   @Column(DataType.INTEGER)
-  month!: number
+  declare month: number;
 
   @Column(DataType.DATE)
-  nextUpdate!: Date
+  declare nextUpdate: Date;
 }
 
 @Table({tableName: "BlueskySessions"})
 export class BlueskySession extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
-  sub!: string;
+  declare sub: string;
 
   @Column(DataType.JSON)
-  sessionData!: object;
+  declare sessionData: object;
 }
 
 @Table({tableName: "BlueskyLoginStates"})
 export class BlueskyLoginState extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
-  sub!: string;
+  declare sub: string;
 
   @Column(DataType.JSON)
-  loginState!: object;
+  declare loginState: object;
 }
