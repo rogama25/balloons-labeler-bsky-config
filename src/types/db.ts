@@ -1,6 +1,6 @@
 import {Column, DataType, Max, Min, Model, PrimaryKey, Table} from "sequelize-typescript";
 
-@Table
+@Table({tableName: "Users"})
 export class User extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
@@ -18,7 +18,7 @@ export class User extends Model {
   nextUpdate!: Date
 }
 
-@Table
+@Table({tableName: "BlueskySessions"})
 export class BlueskySession extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
@@ -28,7 +28,7 @@ export class BlueskySession extends Model {
   sessionData!: object;
 }
 
-@Table
+@Table({tableName: "BlueskyLoginStates"})
 export class BlueskyLoginState extends Model {
   @PrimaryKey
   @Column(DataType.STRING)
