@@ -23,7 +23,7 @@ export const blueskyOauthClient = new NodeOAuthClient({
         console.log(`[stateStore.get] No state found for sub: ${sub}`);
         return undefined
       }
-      console.log(`[stateStore.get] Retrieved state for sub: ${sub}`, sessionData.loginState);
+      console.log(`[stateStore.get] Retrieved state for sub: ${sub}`, sessionData);
       return sessionData.loginState as NodeSavedState
     },
     async del(sub: string) {
@@ -43,7 +43,7 @@ export const blueskyOauthClient = new NodeOAuthClient({
         console.log(`[sessionStore.get] No session found for sub: ${sub}`);
         return undefined
       }
-      console.log(`[sessionStore.get] Retrieved session for sub: ${sub}`, sessionData.sessionData);
+      console.log(`[sessionStore.get] Retrieved session for sub: ${sub}`, sessionData);
       return sessionData.sessionData as NodeSavedSession
     },
     async del(sub: string) {
