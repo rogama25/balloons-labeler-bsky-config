@@ -1,18 +1,21 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import {NavBar} from "@/components/NavBar";
+import {NextIntlClientProvider} from "next-intl";
 
 export const metadata: Metadata = {
     title: "Globitos settings",
     description: "Set up your birthday settings for bluesky",
 };
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" className="w-full scroll-smooth">
         <body className="bg-gray-900 text-white flex flex-col">
+        <NextIntlClientProvider>
             <NavBar/>
             {children}
+        </NextIntlClientProvider>
         </body>
         </html>
     );

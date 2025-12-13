@@ -1,0 +1,21 @@
+{
+  "client_id":"https://globitos.rogama25.es/bluesky-client-metadata.json",
+  "client_name":"Globitos settings",
+  "client_uri":"https://globitos.rogama25.es/",
+  "redirect_uris":[
+    "https://globitos.rogama25.es/callback"
+  ],
+  "grant_types":[
+    "authorization_code",
+    "refresh_token"
+  ],
+  "scope":"atproto",
+  "response_types":[
+    "code"
+  ],
+  "application_type":"web",
+  "token_endpoint_auth_method":"private_key_jwt",
+  "token_endpoint_auth_signing_alg":"RS256",
+  "dpop_bound_access_tokens":true,
+  "jwks_uri":"https://globitos.rogama25.es/jwks.json"
+}

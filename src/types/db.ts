@@ -1,0 +1,37 @@
+import {Column, DataType, Max, Min, Model, PrimaryKey, Table} from "sequelize-typescript";
+
+@Table
+export class User extends Model {
+  @PrimaryKey
+  @Column(DataType.STRING)
+  did!: string;
+
+  @Min(1) @Max(31)
+  @Column(DataType.INTEGER)
+  day!: number;
+
+  @Min(1) @Max(12)
+  @Column(DataType.INTEGER)
+  month!: number
+
+  @Column(DataType.DATE)
+  nextUpdate!: Date
+}
+
+@Table
+export class BlueskySession extends Model {
+  @Column(DataType.STRING)
+  did!: string;
+
+  @Column(DataType.JSON)
+  sessionData!: object;
+}
+
+@Table
+export class BlueskyLoginState extends Model {
+  @Column(DataType.STRING)
+  did!: string;
+
+  @Column(DataType.JSON)
+  loginState!: object;
+}
