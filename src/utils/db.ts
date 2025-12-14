@@ -1,5 +1,5 @@
 import {NodeSavedSession, NodeSavedState} from "@atproto/oauth-client-node";
-import {BlueskyLoginState, BlueskySession} from "@/types/db";
+import {BlueskyLoginState, BlueskySession, User} from "@/types/db";
 
 export async function saveSessionData(sub: string, sessionData: NodeSavedSession) {
   return BlueskySession.upsert({sub, sessionData})
@@ -23,4 +23,8 @@ export async function getStateData(sub: string) {
 
 export async function deleteStateData(sub: string) {
   await BlueskyLoginState.destroy({where: {sub}})
+}
+
+export async function getUser(did: string) {
+  return User.findOne({where: {did}})
 }
