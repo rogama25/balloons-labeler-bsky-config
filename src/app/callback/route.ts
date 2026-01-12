@@ -4,6 +4,7 @@ import "@/config/db"
 import {getUser} from "@/utils/db";
 import {SignJWT} from "jose";
 import { cookies } from 'next/headers'
+import {DateTime} from "luxon";
 
 export async function GET(request: NextRequest) {
   const session = await handleCallback(request.nextUrl.searchParams);
@@ -22,7 +23,7 @@ export async function GET(request: NextRequest) {
   cookieStore.set("auth", jwtEncrypted, {
     httpOnly: true,
     secure: true,
-    expires: 24 * 60 * 60 * 1000,
+    expires: DateTime.now().plus({hours: 24}).toJSDate(),
     sameSite: "lax",
     path: "/"
   })
