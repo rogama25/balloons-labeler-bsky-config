@@ -8,3 +8,4 @@ services:
             - KEY_1=${KEY_1}
             - KEY_2=${KEY_2}
             - KEY_3=${KEY_3}
+            - JWT_SECRET=${JWT_SECRET}

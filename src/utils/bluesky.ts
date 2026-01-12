@@ -4,10 +4,12 @@ import {
   deleteSessionData,
   deleteStateData,
   getSessionData,
-  getStateData,
+  getStateData, getUser,
   saveSessionData,
   saveStateData
 } from "@/utils/db";
+import {cookies} from "next/headers";
+import {jwtVerify} from "jose";
 
 export const blueskyOauthClient = new NodeOAuthClient({
   clientMetadata: clientMetadata as never,
@@ -59,4 +61,13 @@ export async function startAuth(userHandle: string) {
 export async function handleCallback(params: URLSearchParams) {
   const {session} = await blueskyOauthClient.callback(params)
   return session
+}
+
+export async function checkAuth() {
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET || "")
+  const cookieStore = await cookies()
+  const authCookie = cookieStore.get("auth")?.value || ""
+  const { payload } = await jwtVerify(authCookie, secret)
+  const user = await getUser(payload.sub || "")
+  return !!user
 }
